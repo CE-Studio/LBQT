@@ -39,6 +39,7 @@ public class buttonController : MonoBehaviour
                 i.setmode(pressed);
             }
         }
+        print(count);
     }
 
     void OnTriggerEnter(Collider other) {
