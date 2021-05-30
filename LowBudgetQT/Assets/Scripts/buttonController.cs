@@ -39,18 +39,15 @@ public class buttonController : MonoBehaviour
                 i.setmode(pressed);
             }
         }
-        print(count);
     }
 
     void OnTriggerEnter(Collider other) {
         print(other);
         if (other.tag == "cubes") {
             count += 1;
-            print(count);
             aniUpdate();
         } else if (other.tag == "Player") {
             count += 1;
-            print(count);
             aniUpdate();
         }
     }
@@ -58,11 +55,9 @@ public class buttonController : MonoBehaviour
     void OnTriggerExit(Collider other) {
         if (other.tag == "cubes") {
             count -= 1;
-            print(count);
             aniUpdate();
         } else if (other.tag == "Player") {
             count -= 1;
-            print(count);
             aniUpdate();
         }
     }
