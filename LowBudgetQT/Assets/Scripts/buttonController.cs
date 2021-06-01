@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buttonController : MonoBehaviour
-{
+public class buttonController : MonoBehaviour {
     private int count;
     public bool pressed = false;
     private bool lastpressed = false;
