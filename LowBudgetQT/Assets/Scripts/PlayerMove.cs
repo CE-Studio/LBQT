@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove:MonoBehaviour {
     public CharacterController controller;
 
     public float speed = 1f;
@@ -24,11 +24,15 @@ public class PlayerMove : MonoBehaviour {
     public float jumpHeight = 1f;
 
     public LayerMask groundMask;
+    public LayerMask grabMask;
 
     private Vector3 velocity;
     bool isGrounded;
 
     private float jumpTime = 0;
+
+    private bool holding = false;
+    private GameObject held;
 
     void Start() {
         cam = transform.GetChild(0).transform.gameObject;
@@ -66,12 +70,16 @@ public class PlayerMove : MonoBehaviour {
             jumpTime = 0;
         }
 
+        if (Input.GetKeyDown("e") && isGrounded) {
+            grab();
+        }
+
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
         if (transform.position.y < -100f) {
-            transform.position = new Vector3(0,5,0);
+            transform.position = new Vector3(0, 5, 0);
             velocity.y = -2f;
         }
 
@@ -84,6 +92,7 @@ public class PlayerMove : MonoBehaviour {
         } else if (Input.GetMouseButtonDown(1)) {
             toshoot = 1;
         }
+        updateGrab();
     }
 
     void FixedUpdate() {
@@ -126,7 +135,30 @@ public class PlayerMove : MonoBehaviour {
                     //port1.transform.localEulerAngles += new Vector3(90,0,0);
                 }
             }
-            
+        }
+    }
+
+    void grab() {
+        RaycastHit hit;
+        if (holding) {
+            if (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore)) {
+                held.transform.position = hit.point;
+            }
+            holding = false;
+            held.GetComponent<Rigidbody>().useGravity = true;
+            held.GetComponent<Collider>().isTrigger = false;
+        } else if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, grabMask, QueryTriggerInteraction.Ignore)) {
+            holding = true;
+            held = hit.collider.gameObject;
+            held.transform.position = new Vector3(0, 10000, 0);
+            held.GetComponent<Rigidbody>().useGravity = false;
+            held.GetComponent<Collider>().isTrigger = true;
+        }
+    }
+
+    void updateGrab() {
+        if (holding) {
+            held.transform.position = pointSpot.transform.position;
         }
     }
 }

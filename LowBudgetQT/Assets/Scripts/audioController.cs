@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioController : MonoBehaviour, receiver {
+public class audioController:MonoBehaviour, receiver {
     private AudioSource sound;
 
     // Start is called before the first frame update

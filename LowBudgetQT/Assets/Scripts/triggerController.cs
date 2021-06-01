@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class triggerController : MonoBehaviour {
+public class triggerController:MonoBehaviour {
 
     public bool mode = true;
     public GameObject[] affectors;

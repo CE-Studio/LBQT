@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class delayTrigger : MonoBehaviour, receiver {
+public class delayTrigger:MonoBehaviour, receiver {
     public bool inputState = false;
     public float delay = 0.0f;
 

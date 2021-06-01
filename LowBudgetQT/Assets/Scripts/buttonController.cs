@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buttonController : MonoBehaviour {
+public class buttonController:MonoBehaviour {
     private int count;
     public bool pressed = false;
     private bool lastpressed = false;
@@ -30,7 +30,7 @@ public class buttonController : MonoBehaviour {
         if (pressed) {
             plate.transform.localPosition = new Vector3(0f, 0f, -0.044f);
         } else {
-            plate.transform.localPosition = new Vector3(0f,0f, 0f);
+            plate.transform.localPosition = new Vector3(0f, 0f, 0f);
         }
         if (!(pressed == lastpressed)) {
             lastpressed = pressed;

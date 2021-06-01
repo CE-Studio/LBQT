@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class doorController : MonoBehaviour, receiver {
+public class doorController:MonoBehaviour, receiver {
     private Animator anim;
     private AudioSource sound;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         anim = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
     }
