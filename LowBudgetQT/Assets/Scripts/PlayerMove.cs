@@ -114,7 +114,7 @@ public class PlayerMove : MonoBehaviour {
     void shoot(int mode) {
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 1000, 0b11101111111111)) {
-            anim.Play("gunShoot", -1, 0);
+            anim.Play("shoot", -1, 0);
             if (hit.transform.tag == "portable") {
                 if (mode == 0) {
                     port0.transform.position = hit.point;
