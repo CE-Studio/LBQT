@@ -33,8 +33,8 @@ public class PlayerMove : MonoBehaviour {
     void Start() {
         cam = transform.GetChild(0).transform.gameObject;
         Cursor.lockState = CursorLockMode.Locked;
-        anim = cam.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-        pointSpot = cam.transform.GetChild(2).transform.gameObject;
+        anim = cam.transform.GetChild(2).transform.gameObject.GetComponent<Animator>();
+        pointSpot = cam.transform.GetChild(1).transform.gameObject;
         lineRenderer = GetComponent<LineRenderer>();
         port0 = GameObject.Find("portal0");
         port1 = GameObject.Find("portal1");
