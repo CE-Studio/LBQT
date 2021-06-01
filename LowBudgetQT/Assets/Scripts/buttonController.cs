@@ -42,7 +42,6 @@ public class buttonController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        print(other);
         if (other.tag == "cubes") {
             count += 1;
             aniUpdate();
