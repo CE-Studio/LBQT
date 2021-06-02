@@ -24,8 +24,6 @@ public class PlayerMove:MonoBehaviour {
     public float jumpHeight = 1f;
 
     public LayerMask groundMask;
-    public LayerMask grabMask;
-    public LayerMask pushMask;
 
     private Vector3 velocity;
     bool isGrounded;
@@ -50,7 +48,7 @@ public class PlayerMove:MonoBehaviour {
 
         RaycastHit hit;
 
-        if (Physics.SphereCast(transform.position, 0.5f, transform.up * -1, out hit, 0.4f, groundMask, QueryTriggerInteraction.Ignore)) {
+        if (!(velocity.y > 0.1f) && Physics.SphereCast(transform.position, 0.3f, transform.up * -1, out hit, 0.4f, groundMask, QueryTriggerInteraction.Ignore)) {
             jumpTime = 0.2f;
         } else {
             jumpTime -= Time.deltaTime;
@@ -149,14 +147,17 @@ public class PlayerMove:MonoBehaviour {
             holding = false;
             held.GetComponent<Rigidbody>().useGravity = true;
             held.GetComponent<Collider>().isTrigger = false;
-        } else if (holdCooldown > 0.5f && (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, grabMask, QueryTriggerInteraction.Ignore))) {
-            holding = true;
-            held = hit.collider.gameObject;
-            held.GetComponent<Rigidbody>().useGravity = false;
-            held.GetComponent<Collider>().isTrigger = true;
-            holdCooldown = 0.0f;
-        } else if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, pushMask, QueryTriggerInteraction.Ignore)) {
-            hit.collider.gameObject.GetComponent<ineractiveReceiver>().ping();
+        } else if (holdCooldown > 0.5f && (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, groundMask, QueryTriggerInteraction.Ignore))) {
+            print(hit.collider.gameObject.name);
+            if (hit.collider.gameObject.tag == "cubes") {
+                holding = true;
+                held = hit.collider.gameObject;
+                held.GetComponent<Rigidbody>().useGravity = false;
+                held.GetComponent<Collider>().isTrigger = true;
+                holdCooldown = 0.0f;
+            } else if (hit.collider.gameObject.tag == "interactive") {
+                hit.collider.gameObject.GetComponent<ineractiveReceiver>().ping();
+            }
         }
     }
 

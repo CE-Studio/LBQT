@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 8159815452989833704}
   m_Layer: 10
   m_Name: ACTUAL BUTTON CONNECT HERE
-  m_TagString: Untagged
+  m_TagString: interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
