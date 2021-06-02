@@ -10,6 +10,7 @@ public class dispenserController : MonoBehaviour, receiver
     public Transform boxSpawnPos;
     private GameObject boxSlot1;
     private GameObject boxSlot2;
+    public GameObject player;
     private bool boxSlotPointer;
     private bool open;
 
@@ -20,6 +21,7 @@ public class dispenserController : MonoBehaviour, receiver
         //sound = GetComponent<AudioSource>();
         GameObject startBox = Instantiate(box, boxSpawnPos.position, Quaternion.identity) as GameObject;
         boxSlot1 = startBox;
+        player = GameObject.FindWithTag("Player");
     }
 
     public void setmode(bool inp)
@@ -31,17 +33,45 @@ public class dispenserController : MonoBehaviour, receiver
             //sound.Play();
             if (boxSlotPointer)
             {
+                if (player.GetComponent<PlayerMove>().held == boxSlot1)
+                {
+                    player.GetComponent<PlayerMove>().holding = false;
+                    player.GetComponent<PlayerMove>().held.GetComponent<Rigidbody>().useGravity = true;
+                    player.GetComponent<PlayerMove>().held.GetComponent<Collider>().isTrigger = false;
+                }
                 boxSlot1.transform.position = boxSpawnPos.position;
-                boxSlot1.SetActive(false);
+                //boxSlot1.SetActive(false);
+                StartCoroutine(nameof(DisableCube));
             }
             else
             {
                 if (boxSlot2 != null)
                 {
+                    if (player.GetComponent<PlayerMove>().held == boxSlot2)
+                    {
+                        player.GetComponent<PlayerMove>().holding = false;
+                        player.GetComponent<PlayerMove>().held.GetComponent<Rigidbody>().useGravity = true;
+                        player.GetComponent<PlayerMove>().held.GetComponent<Collider>().isTrigger = false;
+                    }
                     boxSlot2.transform.position = boxSpawnPos.position;
-                    boxSlot2.SetActive(false);
+                    //boxSlot2.SetActive(false);
+                    StartCoroutine(nameof(DisableCube));
+
                 }
             }
+        }
+    }
+
+    private IEnumerator DisableCube()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (boxSlotPointer)
+        {
+            boxSlot1.SetActive(false);
+        }
+        else
+        {
+            boxSlot2.SetActive(false);
         }
     }
 
