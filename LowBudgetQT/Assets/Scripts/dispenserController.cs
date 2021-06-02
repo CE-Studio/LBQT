@@ -24,9 +24,9 @@ public class dispenserController : MonoBehaviour, receiver
 
     public void setmode(bool inp)
     {
-        anim.SetBool("drop", inp);
         if (inp)
         {
+            anim.SetBool("drop", inp);
             open = true;
             //sound.Play();
             if (boxSlotPointer)
