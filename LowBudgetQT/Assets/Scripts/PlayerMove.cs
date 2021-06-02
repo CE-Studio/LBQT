@@ -141,14 +141,13 @@ public class PlayerMove:MonoBehaviour {
     void grab() {
         RaycastHit hit;
         if (holding) {
-            if (holdCooldown > 0.25f && (Physics.SphereCast(cam.transform.position, 0.2f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
+            if (holdCooldown > 0.5f && (Physics.SphereCast(cam.transform.position, 0.2f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
                 held.transform.position = hit.point;
             }
             holding = false;
             held.GetComponent<Rigidbody>().useGravity = true;
             held.GetComponent<Collider>().isTrigger = false;
         } else if (holdCooldown > 0.5f && (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, groundMask, QueryTriggerInteraction.Ignore))) {
-            print(hit.collider.gameObject.name);
             if (hit.collider.gameObject.tag == "cubes") {
                 holding = true;
                 held = hit.collider.gameObject;
@@ -166,5 +165,6 @@ public class PlayerMove:MonoBehaviour {
             held.transform.position = pointSpot.transform.position;
         }
         holdCooldown += Time.deltaTime;
+        print((holding, held.name));
     }
 }
