@@ -141,7 +141,7 @@ public class PlayerMove:MonoBehaviour {
     void grab() {
         RaycastHit hit;
         if (holding) {
-            if (holdCooldown > 0.25f && (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
+            if (holdCooldown > 0.25f && (Physics.SphereCast(cam.transform.position, 0.2f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
                 held.transform.position = hit.point;
             }
             holding = false;

@@ -666,13 +666,9 @@ MonoBehaviour:
   jumpHeight: 1
   groundMask:
     serializedVersion: 2
-    m_Bits: 1847
-  grabMask:
-    serializedVersion: 2
-    m_Bits: 512
-  pushMask:
-    serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 5943
+  holding: 0
+  held: {fileID: 0}
 --- !u!1 &8999966786455776709
 GameObject:
   m_ObjectHideFlags: 0
