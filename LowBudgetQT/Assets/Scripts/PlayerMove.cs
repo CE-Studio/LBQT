@@ -70,10 +70,6 @@ public class PlayerMove:MonoBehaviour {
             jumpTime = 0;
         }
 
-        if (Input.GetKeyDown("e") && isGrounded) {
-            grab();
-        }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
@@ -92,6 +88,11 @@ public class PlayerMove:MonoBehaviour {
         } else if (Input.GetMouseButtonDown(1)) {
             toshoot = 1;
         }
+
+        if (Input.GetKeyDown("e") && isGrounded) {
+            grab();
+        }
+
         updateGrab();
     }
 
@@ -165,6 +166,5 @@ public class PlayerMove:MonoBehaviour {
             held.transform.position = pointSpot.transform.position;
         }
         holdCooldown += Time.deltaTime;
-        print((holding, held.name));
     }
 }
