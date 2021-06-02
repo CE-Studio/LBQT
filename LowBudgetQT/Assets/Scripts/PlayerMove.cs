@@ -33,6 +33,7 @@ public class PlayerMove:MonoBehaviour {
 
     private bool holding = false;
     private GameObject held;
+    private float holdCooldown = 0;
 
     void Start() {
         cam = transform.GetChild(0).transform.gameObject;
@@ -141,18 +142,18 @@ public class PlayerMove:MonoBehaviour {
     void grab() {
         RaycastHit hit;
         if (holding) {
-            if (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore)) {
+            if (holdCooldown > 0.5f && (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
                 held.transform.position = hit.point;
             }
             holding = false;
             held.GetComponent<Rigidbody>().useGravity = true;
             held.GetComponent<Collider>().isTrigger = false;
-        } else if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, grabMask, QueryTriggerInteraction.Ignore)) {
+        } else if (holdCooldown > 0.5f && (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, grabMask, QueryTriggerInteraction.Ignore))) {
             holding = true;
             held = hit.collider.gameObject;
-            held.transform.position = new Vector3(0, 10000, 0);
             held.GetComponent<Rigidbody>().useGravity = false;
             held.GetComponent<Collider>().isTrigger = true;
+            holdCooldown = 0.0f;
         }
     }
 
@@ -160,5 +161,6 @@ public class PlayerMove:MonoBehaviour {
         if (holding) {
             held.transform.position = pointSpot.transform.position;
         }
+        holdCooldown += Time.deltaTime;
     }
 }
