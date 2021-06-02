@@ -30,8 +30,8 @@ public class PlayerMove:MonoBehaviour {
 
     private float jumpTime = 0;
 
-    private bool holding = false;
-    private GameObject held;
+    public bool holding = false;
+    public GameObject held;
     private float holdCooldown = 0;
 
     void Start() {
@@ -141,7 +141,7 @@ public class PlayerMove:MonoBehaviour {
     void grab() {
         RaycastHit hit;
         if (holding) {
-            if (holdCooldown > 0.5f && (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
+            if (holdCooldown > 0.25f && (Physics.SphereCast(cam.transform.position, 0.5f, cam.transform.TransformDirection(Vector3.forward), out hit, 1, groundMask, QueryTriggerInteraction.Ignore))) {
                 held.transform.position = hit.point;
             }
             holding = false;
