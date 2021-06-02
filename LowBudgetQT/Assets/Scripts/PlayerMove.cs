@@ -25,6 +25,7 @@ public class PlayerMove:MonoBehaviour {
 
     public LayerMask groundMask;
     public LayerMask grabMask;
+    public LayerMask pushMask;
 
     private Vector3 velocity;
     bool isGrounded;
@@ -154,6 +155,8 @@ public class PlayerMove:MonoBehaviour {
             held.GetComponent<Rigidbody>().useGravity = false;
             held.GetComponent<Collider>().isTrigger = true;
             holdCooldown = 0.0f;
+        } else if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, 3, pushMask, QueryTriggerInteraction.Ignore)) {
+            hit.collider.gameObject.GetComponent<ineractiveReceiver>().ping();
         }
     }
 

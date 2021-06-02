@@ -670,6 +670,9 @@ MonoBehaviour:
   grabMask:
     serializedVersion: 2
     m_Bits: 512
+  pushMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &8999966786455776709
 GameObject:
   m_ObjectHideFlags: 0
