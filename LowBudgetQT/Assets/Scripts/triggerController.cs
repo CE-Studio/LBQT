@@ -5,6 +5,8 @@ using UnityEngine;
 public class triggerController:MonoBehaviour {
 
     public bool mode = true;
+    public bool oneshot = false;
+    private bool ran = false;
     public GameObject[] affectors;
     private receiver[] connections;
 
@@ -20,7 +22,8 @@ public class triggerController:MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && (!oneshot || !ran)) {
+            ran = true;
             foreach (receiver i in connections) {
                 i.setmode(mode);
             }
