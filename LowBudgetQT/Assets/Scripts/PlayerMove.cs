@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerMove:MonoBehaviour {
+public class PlayerMove:MonoBehaviour, receiver {
     public CharacterController controller;
 
     public float speed = 1f;
@@ -11,35 +12,31 @@ public class PlayerMove:MonoBehaviour {
 
     public GameObject cam;
     public GameObject pointSpot;
-
     public Animator anim;
-
     private int toshoot = -1;
-    private LineRenderer lineRenderer;
-
     private GameObject port0;
     private GameObject port1;
 
     public float gravity = -19.62f;
     public float jumpHeight = 1f;
-
     public LayerMask groundMask;
-
     private Vector3 velocity;
     bool isGrounded;
-
     private float jumpTime = 0;
 
     public bool holding = false;
     public GameObject held;
     private float holdCooldown = 0;
 
+    public CanvasGroup fade;
+    private bool fademode = false;
+    private float faded = 1f;
+
     void Start() {
         cam = transform.GetChild(0).transform.gameObject;
         Cursor.lockState = CursorLockMode.Locked;
         anim = cam.transform.GetChild(2).transform.gameObject.GetComponent<Animator>();
         pointSpot = cam.transform.GetChild(1).transform.gameObject;
-        lineRenderer = GetComponent<LineRenderer>();
         port0 = GameObject.Find("portal0");
         port1 = GameObject.Find("portal1");
     }
@@ -94,6 +91,7 @@ public class PlayerMove:MonoBehaviour {
         }
 
         updateGrab();
+        procfade();
     }
 
     void FixedUpdate() {
@@ -166,5 +164,21 @@ public class PlayerMove:MonoBehaviour {
             held.transform.position = pointSpot.transform.position;
         }
         holdCooldown += Time.deltaTime;
+    }
+
+    public void setmode(bool inp) {
+        fademode = inp;
+    }
+
+    void procfade() {
+        if (fademode && (faded != 1f)) {
+            faded += (Time.deltaTime / 3f);
+            faded = Mathf.Clamp01(faded);
+            fade.alpha = faded;
+        } else if (faded != 0f) {
+            faded -= (Time.deltaTime / 3f);
+            faded = Mathf.Clamp01(faded);
+            fade.alpha = faded;
+        }
     }
 }
