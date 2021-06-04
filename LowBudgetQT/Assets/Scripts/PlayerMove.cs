@@ -171,11 +171,11 @@ public class PlayerMove:MonoBehaviour, receiver {
     }
 
     void procfade() {
-        if (fademode && (faded != 1f)) {
+        if (fademode && (faded != 1)) {
             faded += (Time.deltaTime / 3f);
             faded = Mathf.Clamp01(faded);
             fade.alpha = faded;
-        } else if (faded != 0f) {
+        } else if (!fademode && (faded != 0)) {
             faded -= (Time.deltaTime / 3f);
             faded = Mathf.Clamp01(faded);
             fade.alpha = faded;
