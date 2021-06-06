@@ -7,7 +7,7 @@ public class PlayerMove:MonoBehaviour, receiver {
     public CharacterController controller;
 
     public float speed = 1f;
-    public float lookSensitivity = 600f;
+    private float lookSensitivity = 8f;
     public float xRotation = 0f;
 
     public GameObject cam;
@@ -80,6 +80,19 @@ public class PlayerMove:MonoBehaviour, receiver {
     }
 
     void Update() {
+
+        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity;
+        print((mouseX, mouseY, lookSensitivity));
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        if (lookSensitivity != 0) {
+            cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        }
+        transform.Rotate(Vector3.up * mouseX);
+
         if (Input.GetMouseButtonDown(0)) {
             toshoot = 0;
         } else if (Input.GetMouseButtonDown(1)) {
@@ -97,17 +110,6 @@ public class PlayerMove:MonoBehaviour, receiver {
     void FixedUpdate() {
 
         newMoveCalc();
-
-        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity * Time.deltaTime;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        if (lookSensitivity != 0) {
-            cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        }
-        transform.Rotate(Vector3.up * mouseX);
 
         if (toshoot > -1) {
             shoot(toshoot);

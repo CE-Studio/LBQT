@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1587821505245625347}
   - component: {fileID: 6413884642564274138}
   - component: {fileID: 1376010821240474131}
+  - component: {fileID: 1650276810}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -80,6 +81,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &1650276810
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158832728678172933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 157498a2157388f4c8af9410754a7679, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1641010218944149563
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +111,7 @@ GameObject:
   - component: {fileID: 2129598670247813761}
   - component: {fileID: 3035990337233153316}
   - component: {fileID: 992751701706152430}
+  - component: {fileID: 2127486738}
   m_Layer: 0
   m_Name: GLeNN
   m_TagString: Untagged
@@ -160,6 +181,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &2127486738
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641010218944149563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2eea46c7986413e489768696e8fbc743, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2935863520139774826
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +529,7 @@ GameObject:
   - component: {fileID: 5751614369222074751}
   - component: {fileID: 2759356513137226753}
   - component: {fileID: 273469312444384859}
+  - component: {fileID: 2132895476}
   m_Layer: 0
   m_Name: Cube.003
   m_TagString: Untagged
@@ -560,6 +601,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &2132895476
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965448781354762187}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05618227e985ade4e88b4c46b2639d41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6280675069634813236
 GameObject:
   m_ObjectHideFlags: 0
