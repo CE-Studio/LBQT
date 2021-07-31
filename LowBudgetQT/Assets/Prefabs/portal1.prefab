@@ -82,7 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   tracker: {fileID: 6994530208978651212}
+  point: {fileID: 6994530209379480441}
   camera: {fileID: 0}
+  portalCam: {fileID: 6994530210348278405}
 --- !u!65 &6994530209342562633
 BoxCollider:
   m_ObjectHideFlags: 0
