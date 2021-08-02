@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class antlineController : MonoBehaviour, receiver {
     private Animator anim;
+    public Vector3 endpoint;
 
     // Start is called before the first frame update
     void Start() {
