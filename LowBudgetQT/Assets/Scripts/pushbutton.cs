@@ -16,7 +16,7 @@ public class pushbutton:MonoBehaviour, ineractiveReceiver {
 
     void Start() {
         plate = transform.GetChild(0).gameObject;
-        List <receiver> j = new List<receiver>();
+        List<receiver> j = new List<receiver>();
         int h = 0;
         foreach (GameObject i in affectors) {
             j.Add(i.GetComponent<receiver>());
@@ -24,7 +24,7 @@ public class pushbutton:MonoBehaviour, ineractiveReceiver {
         }
         connections = j.ToArray();
     }
-    
+
     void Update() {
         if (!oneshot && pressed && (cooldown >= cooldownTime)) {
             pressed = false;

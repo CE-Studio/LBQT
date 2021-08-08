@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class antlineController : MonoBehaviour, receiver {
+public class antlineController:MonoBehaviour, receiver {
     private LineRenderer line;
     public Transform endpoint;
 
