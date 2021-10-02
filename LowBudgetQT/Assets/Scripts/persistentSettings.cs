@@ -15,4 +15,8 @@ public class persistentSettings:MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public void setRenderTextures(bool inp) {
+        Instance.useRenderTextures = inp;
+    }
 }
