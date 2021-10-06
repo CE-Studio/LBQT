@@ -5,3 +5,5 @@ You've just volunteered for a new scientific program involving what sounds like 
 
 Door chime sound provided by cumesoftware on freesound.org (https://freesound.org/people/cumesoftware/sounds/54542/) with stretching and echo effects added.
 Music provided by BioUnit on freemusicarchive.org (https://freemusicarchive.org/music/Bio_Unit/). Tracks in game: Ice Flow, Orbit, Poly, Parameter 1, Bam
+
+Some fonts provided by https://int10h.org/oldschool-pc-fonts/
